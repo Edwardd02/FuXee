@@ -94,3 +94,11 @@ python main.py
 - 您可以自由使用、修改和分享本软件，但仅限于非商业用途。
 - 未经明确许可，严禁用于任何商业用途。
 - 完整许可条款请参阅[许可协议](LICENSE_CH)文件。
+
+## Contributors
+
+We welcome and appreciate contributions from the community! Special thanks to the following contributors:
+
+- [Aidebug](https://github.com/Edwardd02)  - Project founder and main developer
+
+If you'd like to contribute, please check out our [Contributing Guide](CONTRIBUTING.md).
