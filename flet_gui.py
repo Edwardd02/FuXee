@@ -21,7 +21,8 @@ class PrintLogger:
         pass
 
 
-class RenameApp:
+class RenameApp:\
+    # Initialization
     def __init__(self, page: ft.Page):
         self.page = page
         self.lang = LanguageManager()
@@ -29,7 +30,7 @@ class RenameApp:
         self.create_widgets()
         self.setup_layout()
         self.update_language()
-
+    # Set up page size
     def setup_page(self):
         self.page.window_width = 400
         self.page.window_min_width = 100
@@ -58,7 +59,6 @@ class RenameApp:
         self.folder_path = ft.TextField(
             label="Folder Path",  # Default label
             width=400,
-            read_only=True
         )
         self.browse_button = ft.ElevatedButton(
             text="Browse",  # Default text
@@ -94,7 +94,7 @@ class RenameApp:
 
         # Action buttons
         self.rename_button = ft.ElevatedButton(
-            text="Rename Files and Folders",  # Default text
+            text="Rename Files",  # Default text
             on_click=self.start_renaming,
             width=200,
             icon=ft.Icons.DRIVE_FILE_RENAME_OUTLINE
@@ -113,7 +113,7 @@ class RenameApp:
             read_only=True,
             min_lines=10,
             max_lines=10,
-            width=700
+            width=400
         )
 
     def setup_layout(self):
@@ -125,31 +125,31 @@ class RenameApp:
         self.page.add(
             ft.Row([
                 self.language_dropdown
-            ], alignment=ft.MainAxisAlignment.END),
+            ], alignment=ft.MainAxisAlignment.START),
             ft.Container(height=20),
             ft.Row([
                 self.folder_path,
                 self.browse_button
-            ]),
+            ], alignment=ft.MainAxisAlignment.START),
             ft.Container(height=20),
-            ft.Row([self.text_to_add]),
+            ft.Row([self.text_to_add], alignment=ft.MainAxisAlignment.START),
             ft.Container(height=20),
             ft.Row([
                 self.add_as_text,
                 self.add_as
-            ]),
+            ], alignment=ft.MainAxisAlignment.START),
             ft.Container(height=20),
             ft.Row([
                 self.replace_text,
                 ft.Text("  "),  # Spacer
                 self.with_text
-            ]),
+            ], alignment=ft.MainAxisAlignment.START),
             ft.Container(height=20),
             ft.Row([
                 self.rename_button,
                 ft.Text("  "),  # Spacer
                 self.capitalize_button
-            ], alignment=ft.MainAxisAlignment.CENTER),
+            ], alignment=ft.MainAxisAlignment.START),
             ft.Container(height=20),
             self.log_label,
             self.log_text
