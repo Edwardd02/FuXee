@@ -1,3 +1,5 @@
+# 版权所有 @renxuanyao@formail.com 侵权必究
+# Copyright @renxuanyao@formail.com . All rights reserved. Unauthorized use is strictly prohibited.
 import flet as ft
 from file_operations import rename_files_and_folders, capitalize_names
 from i18n.languages import LanguageManager

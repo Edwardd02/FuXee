@@ -1,3 +1,5 @@
+# 版权所有 @renxuanyao@formail.com 侵权必究
+# Copyright @renxuanyao@formail.com . All rights reserved. Unauthorized use is strictly prohibited.
 SUPPORTED_LANGUAGES = {
     'English': {
         'app_name': 'Refilea',
