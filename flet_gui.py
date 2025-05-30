@@ -46,7 +46,8 @@ class RenameApp:
         self.page.spacing = 10
         
         # Set application icon
-        self.page.window.icon = "assets/Refilea.png"
+        self.page.window.icon = "assets/Refilea.ico" # TODO: Use an absolute path for this
+        self.page.window.icon = "C:/Users/ROGBUG/PycharmProjects/Refilea/assets/Refilea.ico"
 
     def toggle_theme(self, e):
         self.page.theme_mode = (
