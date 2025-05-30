@@ -31,7 +31,7 @@ python main.py
 2. Select your preferred language from the dropdown menu
 3. Use the following features:
    - Click "Browse" to select a folder containing files to rename
-   - Enter text to add as prefix or suffix
+   - Enter text to add as prefix or suffix (optional)
    - Choose whether to add text as prefix or suffix
    - Enter text to replace and replacement text (optional)
    - Click "Rename Files and Folders" to perform the renaming
@@ -46,11 +46,11 @@ python main.py
 ## 简体中文
 
 ### 描述
-复序是一个现代化的、用户友好的批量文件重命名工具，具有清爽的 Material Design 界面。它允许您轻松地重命名多个文件和文件夹，具有添加前缀/后缀、文本替换和首字母大写等功能。
+复序是一个现代化的、用户友好的批量文件重命名工具，具有清爽的设计界面。它允许您轻松地重命名多个文件和文件夹，具有添加前缀/后缀、文本替换和首字母大写等功能。
 
 ### 功能特点
 - 为文件名添加前缀或后缀
-- 替换文件名中的文本
+- 替换文件名中的文本(可选）
 - 文件名首字母大写
 - 现代化的 Material Design 界面
 - 多语言支持（英文、中文）
