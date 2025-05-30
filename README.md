@@ -41,6 +41,13 @@ python main.py
 - Python 3.7+
 - flet
 
+## License  
+This project is licensed under the **Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)** License.  
+- You may **use, modify, and share** the software for **non-commercial purposes only**.  
+- **Commercial use is strictly prohibited** without explicit permission.  
+- See the full license terms in [LICENSE](LICENSE).  
+
+
 ---
 
 ## 简体中文
