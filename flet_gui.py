@@ -33,12 +33,20 @@ class RenameApp:
 
     # Set page size
     def setup_page(self):
-        self.page.window_resizable = True
-        self.page.window_maximizable = True
-        self.page.auto_scroll = True
+        # Window configuration
+        self.page.window.resizable = False
+        self.page.window.maximizable = True
+        self.page.auto_scroll = False
+        self.page.window.width = 700
+        self.page.window.height = 450
+        self.page.window.min_width = 700
+        self.page.window.min_height = 450
         self.page.padding = 20
-        self.page.theme_mode = ft.ThemeMode.LIGHT
+        self.page.theme_mode = ft.ThemeMode.DARK
         self.page.spacing = 10
+        
+        # Set application icon
+        self.page.window.icon = "assets/Refilea.png"
 
     def toggle_theme(self, e):
         self.page.theme_mode = (
@@ -69,14 +77,18 @@ class RenameApp:
             label="Language",
             options=[ft.dropdown.Option(lang) for lang in self.lang.available_languages],
             value=self.lang.current_language,
-            on_change=self.on_language_change
+            on_change=self.on_language_change,
+            border_width= 2,
+            border_color = ft.Colors.INVERSE_SURFACE
         )
 
         # Folder selection
         self.folder_path = ft.TextField(
             label="Folder Path",  # Default label
             read_only=False,
-            width=500
+            width=505,
+            border_width=2,
+            border_color=ft.Colors.INVERSE_SURFACE
         )
         self.browse_button = ft.ElevatedButton(
             text="Browse",  # Default text
@@ -87,7 +99,9 @@ class RenameApp:
         # Text to add
         self.text_to_add = ft.TextField(
             label="Text to Add",  # Default label
-            width=600
+            width=600,
+            border_width=2,
+            border_color=ft.Colors.INVERSE_SURFACE
         )
 
         # Prefix/Suffix radio
@@ -103,11 +117,15 @@ class RenameApp:
         # Replace text
         self.replace_text = ft.TextField(
             label="Replace Text",  # Default label
-            width=290
+            width=290,
+            border_width=2,
+            border_color=ft.Colors.INVERSE_SURFACE
         )
         self.with_text = ft.TextField(
             label="With",  # Default label
-            width=290
+            width=290,
+            border_width=2,
+            border_color=ft.Colors.INVERSE_SURFACE
         )
 
         # Action buttons
@@ -125,13 +143,19 @@ class RenameApp:
         )
 
         # Log output
-        self.log_label = ft.Text("Log Output")  # Default text
+        self.log_label = ft.Text(
+            value="Log Output",
+            visible = False,
+        )  # Default text
         self.log_text = ft.TextField(
+            visible=False,
             multiline=True,
             read_only=True,
             min_lines=10,
             max_lines=10,
-            width=600
+            width=600,
+            border_width=2,
+            border_color=ft.Colors.INVERSE_SURFACE
         )
 
     def setup_layout(self):
@@ -154,7 +178,7 @@ class RenameApp:
                     ft.Row([self.log_label]),
                     ft.Row([self.log_text])
                 ], spacing=20),
-                padding=10
+                padding=10,
             )
         )
 
@@ -207,4 +231,4 @@ class RenameApp:
 
 
 def main(page: ft.Page):
-    app = RenameApp(page) 
+    app = RenameApp(page)
