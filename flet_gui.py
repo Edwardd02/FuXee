@@ -21,7 +21,7 @@ class PrintLogger:
         pass
 
 
-class RenameApp:\
+class RenameApp:
     # Initialization
     def __init__(self, page: ft.Page):
         self.page = page
@@ -30,14 +30,24 @@ class RenameApp:\
         self.create_widgets()
         self.setup_layout()
         self.update_language()
-    # Set up page size
+
+    # Set page size
     def setup_page(self):
-        self.page.window_width = 400
-        self.page.window_min_width = 100
-        self.page.window_height = 300
-        self.page.window_min_height = 100
+        self.page.window_resizable = True
+        self.page.window_maximizable = True
+        self.page.auto_scroll = True
         self.page.padding = 20
         self.page.theme_mode = ft.ThemeMode.LIGHT
+        self.page.spacing = 10
+
+    def toggle_theme(self, e):
+        self.page.theme_mode = (
+            ft.ThemeMode.DARK 
+            if self.page.theme_mode == ft.ThemeMode.LIGHT 
+            else ft.ThemeMode.LIGHT
+        )
+        self.theme_button.name = "dark_mode" if self.page.theme_mode == ft.ThemeMode.LIGHT else "light_mode"
+        self.page.update()
 
     def create_widgets(self):
         # Create file picker
@@ -45,6 +55,13 @@ class RenameApp:\
             on_result=self.on_folder_picked
         )
         self.page.overlay.append(self.file_picker)
+        
+        # Theme toggle button
+        self.theme_button = ft.IconButton(
+            icon=ft.Icons.DARK_MODE,
+            on_click=self.toggle_theme,
+            tooltip="Toggle theme"
+        )
         
         # Language selector
         self.language_dropdown = ft.Dropdown(
@@ -58,7 +75,8 @@ class RenameApp:\
         # Folder selection
         self.folder_path = ft.TextField(
             label="Folder Path",  # Default label
-            width=400,
+            read_only=False,
+            width=500
         )
         self.browse_button = ft.ElevatedButton(
             text="Browse",  # Default text
@@ -69,7 +87,7 @@ class RenameApp:\
         # Text to add
         self.text_to_add = ft.TextField(
             label="Text to Add",  # Default label
-            width=400
+            width=600
         )
 
         # Prefix/Suffix radio
@@ -85,24 +103,24 @@ class RenameApp:\
         # Replace text
         self.replace_text = ft.TextField(
             label="Replace Text",  # Default label
-            width=200
+            width=290
         )
         self.with_text = ft.TextField(
             label="With",  # Default label
-            width=200
+            width=290
         )
 
         # Action buttons
         self.rename_button = ft.ElevatedButton(
-            text="Rename Files",  # Default text
+            text="Rename Files and Folders",  # Default text
             on_click=self.start_renaming,
-            width=200,
+            width=290,
             icon=ft.Icons.DRIVE_FILE_RENAME_OUTLINE
         )
         self.capitalize_button = ft.ElevatedButton(
             text="Capitalize Names",  # Default text
             on_click=self.start_capitalizing,
-            width=200,
+            width=290,
             icon=ft.Icons.TEXT_FIELDS
         )
 
@@ -113,7 +131,7 @@ class RenameApp:\
             read_only=True,
             min_lines=10,
             max_lines=10,
-            width=400
+            width=600
         )
 
     def setup_layout(self):
@@ -121,40 +139,24 @@ class RenameApp:\
         self.logger = PrintLogger(self.log_text)
         sys.stdout = self.logger
 
-        # Add all controls to the page
+        # Add all controls to the page in a container
         self.page.add(
-            ft.Row([
-                self.language_dropdown
-            ], alignment=ft.MainAxisAlignment.START),
-            ft.Container(height=20),
-            ft.Row([
-                self.folder_path,
-                self.browse_button
-            ], alignment=ft.MainAxisAlignment.START),
-            ft.Container(height=20),
-            ft.Row([self.text_to_add], alignment=ft.MainAxisAlignment.START),
-            ft.Container(height=20),
-            ft.Row([
-                self.add_as_text,
-                self.add_as
-            ], alignment=ft.MainAxisAlignment.START),
-            ft.Container(height=20),
-            ft.Row([
-                self.replace_text,
-                ft.Text("  "),  # Spacer
-                self.with_text
-            ], alignment=ft.MainAxisAlignment.START),
-            ft.Container(height=20),
-            ft.Row([
-                self.rename_button,
-                ft.Text("  "),  # Spacer
-                self.capitalize_button
-            ], alignment=ft.MainAxisAlignment.START),
-            ft.Container(height=20),
-            self.log_label,
-            self.log_text
+            ft.Container(
+                content=ft.Column([
+                    # Top row with language and theme controls
+                    ft.Row([self.language_dropdown, self.theme_button]),
+                    # File selection row
+                    ft.Row([self.folder_path,self.browse_button]),
+                    ft.Row([self.text_to_add]),
+                    ft.Row([self.add_as_text, self.add_as]),
+                    ft.Row([self.replace_text, ft.Container(width=20), self.with_text]),
+                    ft.Row([self.rename_button, self.capitalize_button],spacing=20),
+                    ft.Row([self.log_label]),
+                    ft.Row([self.log_text])
+                ], spacing=20),
+                padding=10
+            )
         )
-        self.page.update()
 
     def update_language(self):
         self.page.title = self.lang.get_text('app_name')
