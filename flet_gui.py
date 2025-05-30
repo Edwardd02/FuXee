@@ -4,7 +4,7 @@ import flet as ft
 from file_operations import rename_files_and_folders, capitalize_names
 from i18n.languages import LanguageManager
 import sys
-
+import os
 
 class PrintLogger:
     """Redirects print statements to a Text widget."""
@@ -46,8 +46,8 @@ class RenameApp:
         self.page.spacing = 10
         
         # Set application icon
-        self.page.window.icon = "assets/Refilea.ico" # TODO: Use an absolute path for this
-        self.page.window.icon = "C:/Users/ROGBUG/PycharmProjects/Refilea/assets/Refilea.ico"
+        icon_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets", "Refilea.ico")
+        self.page.window.icon = icon_path
 
     def toggle_theme(self, e):
         self.page.theme_mode = (
