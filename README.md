@@ -1,11 +1,11 @@
-# Refilea / 复序
+# Fusee / 复序
 
 [English](#english) | [简体中文](#简体中文)
 
 ## English
 
 ### Description
-Refilea is a modern, user-friendly batch file renaming tool with a clean Material Design interface. It allows you to easily rename multiple files and folders with features like adding prefixes/suffixes, text replacement, and name capitalization.
+Fusee is a modern, user-friendly batch file renaming tool with a clean Material Design interface. It allows you to easily rename multiple files and folders with features like adding prefixes/suffixes, text replacement, and name capitalization.
 
 ### Features
 - Add prefix or suffix to file names
