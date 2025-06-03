@@ -46,7 +46,7 @@ class RenameApp:
         self.page.spacing = 10
         
         # Set application icon
-        icon_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets", "Refilea.ico")
+        icon_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets", "Fuxee.ico")
         self.page.window.icon = icon_path
 
     def toggle_theme(self, e):

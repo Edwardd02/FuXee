@@ -2,7 +2,7 @@
 # Copyright @renxuanyao@formail.com . All rights reserved. Unauthorized use is strictly prohibited.
 SUPPORTED_LANGUAGES = {
     'English': {
-        'app_name': 'Refilea',
+        'app_name': 'Fuxee',
         'language': 'Language',
         'folder_path': 'Folder Path:',
         'browse': 'Browse',
